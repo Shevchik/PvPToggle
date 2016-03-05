@@ -2,11 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/Sleelin/Games/Bukkit/downloaded/Permissions.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Sleelin/Games/Bukkit/craftbukkit-1.3.2-R1.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Sleelin/Games/Bukkit/plugins/Citizens.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Sleelin/Games/Bukkit/plugins/WorldGuard/worldguard-5.5.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Sleelin/Games/Bukkit/plugins/WorldEdit/worldedit-5.4.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Sleelin/Downloads/Citizens1.1.3/Citizens.jar"/>
+	<classpathentry kind="lib" path="/home/shevchik/Рабочий стол/minecraft/servers/spigot19/spigot.jar"/>
+	<classpathentry kind="lib" path="/home/shevchik/Рабочий стол/minecraft/servers/spigot19/plugins/WorldEdit.jar"/>
+	<classpathentry kind="lib" path="/home/shevchik/Рабочий стол/minecraft/servers/spigot19/plugins/WorldGuard.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

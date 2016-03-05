@@ -10,14 +10,14 @@ import com.sleelin.pvptoggle.PvPToggle;
 public class WorldListener implements Listener {
 
 	public static PvPToggle plugin;
-	
+
 	public WorldListener(PvPToggle instance) {
 		plugin = instance;
 	}
-	
+
 	@EventHandler(priority = EventPriority.NORMAL)
-	public void onWorldLoad(WorldLoadEvent event){
+	public void onWorldLoad(WorldLoadEvent event) {
 		plugin.loadWorld(event.getWorld());
 	}
-	
+
 }

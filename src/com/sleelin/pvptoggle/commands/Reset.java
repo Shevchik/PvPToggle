@@ -12,18 +12,17 @@ import com.sleelin.pvptoggle.PvPToggle;
 
 public class Reset extends PvPCommand {
 
-	public Reset(PvPToggle plugin, CommandSender sender, Command command,
-			String label, String[] args) {
+	public Reset(PvPToggle plugin, CommandSender sender, Command command, String label, String[] args) {
 		super(plugin, sender, command, label, args);
 	}
 
-	public Reset(PvPToggle plugin, CommandSender sender){
+	public Reset(PvPToggle plugin, CommandSender sender) {
 		super(plugin, sender);
 	}
-	
+
 	@Override
 	protected boolean processCommand() {
-		switch (args.length){
+		switch (args.length) {
 		case 2:
 			// reset specific player across all worlds
 			resetPlayer(sender, getPlayer(sender, args[1], true), "*");
@@ -42,33 +41,36 @@ public class Reset extends PvPCommand {
 	protected void sendUsage(CommandSender sender) {
 		sender.sendMessage(helpHeader);
 		ChatColor messagecolour = ChatColor.GOLD;
-		if (plugin.permissionsCheck(sender, "pvptoggle.other.reset", true)){
-			sender.sendMessage(messagecolour+"/pvp reset [player] "+ChatColor.GRAY+"- Resets player's PvP status to default across all worlds");
-			sender.sendMessage(messagecolour+"/pvp reset [player] [world] "+ChatColor.GRAY+"- Resets player's PvP status to default in specified world");
+		if (plugin.permissionsCheck(sender, "pvptoggle.other.reset", true)) {
+			sender.sendMessage(messagecolour + "/pvp reset [player] " + ChatColor.GRAY + "- Resets player's PvP status to default across all worlds");
+			sender.sendMessage(messagecolour + "/pvp reset [player] [world] " + ChatColor.GRAY + "- Resets player's PvP status to default in specified world");
 		}
 	}
-	
+
 	/**
 	 * Resets a player's PvP status to login default in specified, or all worlds
-	 * @param sender - who sent the command
-	 * @param player - target player
-	 * @param worldname - what world to reset in
+	 *
+	 * @param sender
+	 *            - who sent the command
+	 * @param player
+	 *            - target player
+	 * @param worldname
+	 *            - what world to reset in
 	 */
 	private void resetPlayer(CommandSender sender, Player player, String worldname) {
-		if ((player == null)||(worldname == null)){
+		if ((player == null) || (worldname == null)) {
 			// invalid player, exit
 			return;
 		}
-		
-		if (!(((plugin.permissionsCheck(sender, "pvptoggle.self.reset", true))&&(sender.getName().equalsIgnoreCase(player.getName()))) 
-				|| (plugin.permissionsCheck(sender, "pvptoggle.other.reset", true)) || (plugin.permissionsCheck(sender, "pvptoggle.admin", true)))){
+
+		if (!(((plugin.permissionsCheck(sender, "pvptoggle.self.reset", true)) && (sender.getName().equalsIgnoreCase(player.getName()))) || (plugin.permissionsCheck(sender, "pvptoggle.other.reset", true)) || (plugin.permissionsCheck(sender, "pvptoggle.admin", true)))) {
 			PvPLocalisation.display(sender, "", "", "", PvPLocalisation.Strings.NO_PERMISSION);
-			return;	// no permission, return out
+			return; // no permission, return out
 		}
-		
-		if (worldname.equalsIgnoreCase("*")){
+
+		if (worldname.equalsIgnoreCase("*")) {
 			// if resetting in all worlds
-			for (World world : plugin.getServer().getWorlds()){
+			for (World world : plugin.getServer().getWorlds()) {
 				plugin.setPlayerStatus(player, world.getName(), plugin.getWorldDefault(world.getName()));
 			}
 			plugin.setLastAction(player, "toggle");
@@ -81,7 +83,7 @@ public class Reset extends PvPCommand {
 			PvPLocalisation.display(player, "", worldname, "", PvPLocalisation.Strings.PVP_RESET_PLAYER);
 			PvPLocalisation.display(sender, player.getName(), worldname, "", PvPLocalisation.Strings.PVP_RESET_PLAYER_SENDER);
 		}
-		
+
 	}
 
 }
